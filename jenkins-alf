@@ -15,8 +15,10 @@ Build Deployed Successfully ''', cc: '', from: '', replyTo: '', subject: 'Jenkin
     
     }
     
-    sshagent(['tomcat']) {
-     sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@54.208.117.131:/opt/apache-tomcat-8.5.51/webapps/'
+    sshagent(['']) {
+    sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@54.208.117.131:/opt/apache-tomcat-8.5.51/webapps/'
+}
+     
 }
     
     
