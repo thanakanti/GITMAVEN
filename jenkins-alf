@@ -14,5 +14,11 @@ node {
 Build Deployed Successfully ''', cc: '', from: '', replyTo: '', subject: 'Jenkins Success build mail', to: 'althaf.kommadi@testingxperts.com'
     
     }
+    
+    sshagent(['admin']) {
+     sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@54.208.117.131:/opt/apache-tomcat-9.0.30/webapps/'
+}
+    
+    
        
        }
