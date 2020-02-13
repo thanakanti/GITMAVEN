@@ -8,4 +8,11 @@ node {
      def mvnHome = tool name: 'Maven', type: 'maven'
      sh "${mvnHome}/bin/mvn package"
        }
+    stage('Email Notification'){
+    
+    mail bcc: '', body: '''Hi,
+Build Deployed Successfully ''', cc: '', from: '', replyTo: '', subject: 'Jenkins Success build mail', to: 'althaf.kommadi@testingxperts.com'
+    
+    }
+       
        }
