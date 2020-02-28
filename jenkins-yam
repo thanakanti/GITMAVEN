@@ -1,0 +1,23 @@
+node {
+  stage('SCM Checkout') {
+        git 'https://github.com/rudrapdas82/GITMAVEN'
+        }
+        
+   stage('Compile Project'){
+     //Get MAVEN HOME PATH
+     def mvnHome = tool name: 'maven-3', type: 'maven'
+     sh "${mvnHome}/bin/mvn package"
+       }
+       
+       stage('Email Notification'){
+  mail bcc: '', body: '''Hi WELCOME TO JENKINS EMAIL ALERT
+   Thanks yamini''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to:'yaminijarabana0402@gmail.com'
+  } 
+  
+   stage('Deploy to Tomcat'){    
+    sshagent(['Tomcat_P']) {
+    sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@3.92.209.146:/opt/apache-tomcat-8.5.51/webapps/'
+      }
+     }
+   
+}
