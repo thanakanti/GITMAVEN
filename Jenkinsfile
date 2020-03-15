@@ -1,6 +1,6 @@
 node {
   stage('SCM Checkout') {
-      git  https://github.com/thanakanti/GITMAVEN.git
+      git  https://github.com/thanakanti/GITMAVEN
         }
    stage('Compile Project'){
      //Get MAVEN HOME PATH
